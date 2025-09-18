@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "description": {
+      "hello": "Hello world",
+      "part2": "Learn React"
+    },
+    "login": {
+      "login_title": "WELCOME TO",
+      "ASG_AI": "ASG AI",
+      "login_description": "Sign in with your Microsoft account to continue",
+      "login_Button_text": "Continue with Microsoft",
+      "guest_login": "Login as Guest",
+      "rights": "All rights reserved",
+      "or": "OR"
+    },
+    "sidebar": {
+      "newChat": "New Chat",
+      "search": "Search",
+      "library": "Library",
+      "createFolder": "Create Folder",
+      "recentItems": "Recent"
+    }
+  }
+}

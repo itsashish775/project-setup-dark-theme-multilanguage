@@ -3,7 +3,7 @@ import Dashboard from "../pages/Dashboard";
 
 export const protectedRoutes = [
   {
-    path: "dashboard",
+    path: "chat",
     element: React.createElement(Dashboard),
   },
 ];

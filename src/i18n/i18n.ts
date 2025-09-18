@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import resources from "./locales";
 
 i18n
   // detect user language
@@ -16,32 +17,7 @@ i18n
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
-    resources: {
-      en: {
-        translation: {
-          description: {
-            hello: "Hello world",
-            part2: "Learn React",
-          },
-        },
-      },
-      hi: {
-        translation: {
-          description: {
-            hello: "नमस्ते दुनिया",
-            part2: "React सीखें",
-          },
-        },
-      },
-      ar: {
-        translation: {
-          description: {
-            hello: "مرحبا بالعالم",
-            part2: "تعلم React",
-          },
-        },
-      },
-    },
+    resources:resources
   });
 
 export default i18n;

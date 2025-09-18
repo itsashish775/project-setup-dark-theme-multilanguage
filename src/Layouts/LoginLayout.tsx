@@ -9,20 +9,24 @@ interface Props {
 
 const LoginLayout: React.FC<Props> = ({ children }) => {
   return (
-    <div className='min-h-screen bg-primary flex flex-col items-center justify-center px-4'>
+    <div className='min-h-screen relative flex flex-col items-center justify-center px-4 overflow-hidden'>
+      {/* Background image as <img> */}
+      <img
+        src='/asg-bgImage.png'
+        alt='Background'
+        className='absolute top-0 w-full h-screen object-fill -z-10 scale-100'
+      />
+
       {/* Top right corner language switcher */}
       <div className='absolute top-4 right-4 flex gap-4'>
-        <LanguageSwitcher />
         <DarkModeToggle />
-      </div>
-      <div>
-        
+        <LanguageSwitcher />
       </div>
 
+      
+
       {/* Login card / modal */}
-      <div
-        className='w-full max-w-md p-6  rounded-2xl '
-      >
+      <div className='w-full p-6 flex justify-center rounded-2xl'>
         {children}
       </div>
     </div>

@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "description": {
+      "hello": "مرحبا بالعالم",
+      "part2": "تعلم React"
+    },
+    "login": {
+      "login_title": "مرحبًا بك في",
+      "ASG_AI": "ASG AI",
+      "login_description": "المتابعة بتسجيل الدخول باستخدام حساب مايكروسوفت",
+      "login_Button_text": "تسجيل الدخول باستخدام مايكروسوفت",
+      "guest_login": "تسجيل الدخول كضيف",
+      "rights": "جميع الحقوق محفوظة",
+      "or": "أو"
+    },
+    "sidebar": {
+      "newChat": "دردشة جديدة",
+      "search": "بحث",
+      "library": "المكتبة",
+      "createFolder": "إنشاء مجلد",
+      "recentItems": "الأخيرة"
+    }
+  }
+}

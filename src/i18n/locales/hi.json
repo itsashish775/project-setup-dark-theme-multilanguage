@@ -1,0 +1,24 @@
+{
+  "translation": {
+    "description": {
+      "hello": "नमस्ते दुनिया",
+      "part2": "React सीखें"
+    },
+    "login": {
+      "login_title": "स्वागत है",
+      "ASG_AI": "ASG AI",
+      "login_description": "जारी रखने के लिए अपने Microsoft खाते से साइन इन करें",
+      "login_Button_text": "Microsoft के साथ जारी रखें",
+      "guest_login": "मेहमान के रूप में लॉगिन करें",
+      "rights": "सर्वाधिकार सुरक्षित",
+      "or": "या"
+    },
+    "sidebar": {
+      "newChat": "नई चैट",
+      "search": "खोज",
+      "library": "पुस्तकालय",
+      "createFolder": "फ़ोल्डर बनाएँ",
+      "recentItems": "हाल ही में"
+    }
+  }
+}

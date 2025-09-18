@@ -23,7 +23,7 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"default"} className='flex items-center gap-2'>
+        <Button variant={"outline"} className='flex items-center gap-2'>
           <Globe className='w-4 h-4' />
           <span className='hidden sm:inline'>
             {languages.find((l) => l.code === language)?.label || "Language"}
