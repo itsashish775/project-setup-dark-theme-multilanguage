@@ -5,26 +5,59 @@ import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useTheme } from "@/context/ThemeContext";
+import { loginRequest } from "@/lib/msalConfig";
+import { useMsal } from "@azure/msal-react";
+import { useNavigate } from "react-router-dom";
+import { useExchangeTokenMutation } from "@/ReduxStore/reducers/auth/auth.api";
 
 const Login: React.FC = () => {
+  const { instance, accounts } = useMsal();
   const { t, i18n } = useTranslation();
   const { theme } = useTheme();
-  console.log(theme);
+  const [exchangeToken] = useExchangeTokenMutation();
+  const navigate = useNavigate();
 
   const currentLanguageDirection = i18n.language == "ar" ? "rtl" : "ltr";
-  console.log("Current language: ", i18n.language);
+  const handleLogin = async () => {
+    try {
+      const response = await instance.loginPopup(loginRequest);
+
+      // ✅ Get access token for APIs (Graph or your backend)
+      const account = response.account;
+      const tokenResponse = await instance.acquireTokenSilent({
+        ...loginRequest,
+        account,
+      });
+
+      console.log("Access Token:", tokenResponse.accessToken);
+
+      const result: any = await exchangeToken({
+        token: tokenResponse.accessToken,
+      }).unwrap();
+      console.log("Backend token exchange result:", result);
+
+      // After successful login → redirect
+      if (result.success) {
+        toast.success("Login successful!");
+        navigate(`/${i18n.language}/chat`);
+      }
+    } catch (error) {
+      toast.error("Login failed. Please try again.");
+      console.error("MSAL login failed:", error);
+    }
+  };
 
   return (
     <LoginLayout>
       <div className='w-full flex flex-col items-center'>
-        <div className='relative z-10 w-full max-w-2xl rounded-xl bg-card/44 shadow-xl   px-10 py-11 text-center backdrop-blur-[22.3px]'>
+        <div className='relative z-10 w-full max-w-2xl rounded-xl bg-card/44 shadow-[0_4px_20px_rgba(0,0,0,0.3)]  px-10 py-11 text-center backdrop-blur-[22.3px]'>
           {/* Logo */}
           <div className='flex justify-center mb-8'>
             <img
               src={
                 theme == "light"
                   ? "/asg-full-logo-dark.svg"
-                  : "/asg-full-logo-light.png"
+                  : "/asg-full-logo-dark.png"
               }
               alt='Company Logo'
               width={257}
@@ -50,10 +83,11 @@ const Login: React.FC = () => {
           {/* Microsoft Button */}
           <Button
             className='w-full mt-6 bg-cyan-600 hover:bg-cyan-700 text-white'
-            onClick={() => {
-              toast("Event has been created.");
-              console.log("Login with Microsoft");
-            }}
+            // onClick={() => {
+            //   toast("Event has been created.");
+            //   console.log("Login with Microsoft");
+            // }}
+            onClick={handleLogin}
             dir={currentLanguageDirection}
           >
             <img

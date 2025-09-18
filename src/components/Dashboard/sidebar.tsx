@@ -1,9 +1,4 @@
 import {
-  Plus,
-  Search,
-  Library,
-  FolderPlus,
-  MessageSquare,
   ChevronLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,7 +12,7 @@ interface AppSidebarProps {
   onToggle: () => void;
 }
 
-export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
+export function AppSidebar({ collapsed, onToggle }: Readonly<AppSidebarProps>) {
   return (
     <div
       className={`relative bg-card border-r border-border transition-all duration-300 ${
@@ -67,14 +62,14 @@ export function AppSidebar({ collapsed, onToggle }: AppSidebarProps) {
           </div>
 
           {/* Main Navigation */}
-          <NavigationItem collapsed={collapsed} />
+          <NavigationItem collapsed={collapsed} onToggle={onToggle} />
 
           {/* Recent */}
-          <RecentItem collapsed={collapsed} />
+          <RecentItem collapsed={collapsed} onToggle={onToggle} />
         </div>
       </ScrollArea>
-      <div className='border-t border-border p-4'>
-        <MyAccount />
+      <div className='border-t border-border py-4'>
+        <MyAccount collapsed={collapsed} />
       </div>
     </div>
   );

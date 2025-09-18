@@ -23,8 +23,8 @@ export const router = (() => {
       path: "/:lng",
       element: React.createElement(LanguageProvider),
       children: [
-        ...publicRoutes,
-        ...protectedRoutes,
+        publicRoutes,
+        protectedRoutes,
         { path: "*", element: React.createElement(NotFound) }, // ✅ catch-all
       ],
     },

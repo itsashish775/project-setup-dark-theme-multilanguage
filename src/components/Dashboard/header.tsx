@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Menu, ChevronDown, User, Settings, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -11,7 +11,6 @@ import {
 import { AppSidebar } from "./sidebar";
 import DarkModeToggle from "../DarkModToggle";
 import LanguageSwitcher from "../LanguageSwitcher";
-import MyAccount from "../Sidebar/MyAccount";
 
 interface DashboardHeaderProps {
   onToggleSidebar: () => void;
@@ -21,7 +20,7 @@ interface DashboardHeaderProps {
 export function DashboardHeader({
   onToggleSidebar,
   sidebarCollapsed,
-}: DashboardHeaderProps) {
+}: Readonly<DashboardHeaderProps>) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <header className='h-14 border-b border-border bg-background flex items-center justify-between px-4'>

@@ -18,6 +18,7 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "../ui/scroll-area";
 import { Input } from "../ui/input";
 import { useTranslation } from "react-i18next";
+import DemoPage from "../Dialogs/SearchDialog";
 
 const features = [
   {
@@ -77,7 +78,7 @@ const features = [
 ];
 
 export function DashboardContent() {
-  const [message, onChangeMessage] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const { t, i18n } = useTranslation();
   const currentLocale = i18n.language;
   const dir = currentLocale === "ar" ? "rtl" : "ltr";
@@ -119,6 +120,8 @@ export function DashboardContent() {
         </div>
       </ScrollArea>
 
+      
+
       {/* Chat Input */}
       <div
         className='p-4 border-t border-border'
@@ -131,8 +134,8 @@ export function DashboardContent() {
             </Button>
             <Input
               value={message}
-              onChange={(e) => onChangeMessage(e.target.value)}
-              placeholder={t("placeholder")}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder={"placeholder"}
               className='flex-1 border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0'
             />
             <Button size='sm' variant='default'>

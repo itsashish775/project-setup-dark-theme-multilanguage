@@ -1,5 +1,4 @@
-import { FolderPlus, Library, MessageSquare, Plus, Search } from "lucide-react";
-import React from "react";
+import {  MessageSquare } from "lucide-react";
 import { Button } from "../ui/button";
 import { useTranslation } from "react-i18next";
 
@@ -9,8 +8,9 @@ const recentItems = [
 ];
 interface RecentItemProps {
   collapsed: boolean;
+  onToggle: () => void;
 }
-const RecentItem = ({ collapsed }: RecentItemProps) => {
+const RecentItem = ({ collapsed,onToggle }: RecentItemProps) => {
   const { t, i18n } = useTranslation();
   const dir = i18n.language === "ar" ? "rtl" : "ltr";
   return (
@@ -23,7 +23,7 @@ const RecentItem = ({ collapsed }: RecentItemProps) => {
           <div className='space-y-1'>
             {recentItems.map((item, index) => (
               <Button
-                key={index}
+                key={item.title + index}
                 dir={dir}
                 variant='ghost'
                 className='w-full justify-start h-auto p-2 hover:bg-accent group'
